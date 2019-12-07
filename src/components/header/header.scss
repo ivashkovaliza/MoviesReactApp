@@ -1,0 +1,78 @@
+.header {
+  height: 390px;
+  width: 100%;
+  background: url("../../images/movies-bg.jpg");
+  background-size: cover;
+}
+
+.logo {
+  color: #f65261;
+  font-size: 22px;
+  font-weight: 200;
+}
+
+.h2 {
+  font-size: 36px;
+  text-transform: uppercase;
+  font-weight: 200;
+}
+
+.search-btn {
+  border: none;
+  border-radius: 5px;
+  padding: 16px 60px;
+  background-color: #f65261;
+  color: white;
+  text-transform: uppercase;
+  font-size: 20px;
+
+  &:hover {
+    background-color: #fb6977;
+  }
+}
+
+.search-field {
+  border: none;
+  padding: 16px;
+  border-radius: 5px;
+  background-color: #44414194;
+  font-size: 20px;
+  margin-right: 10px;
+  color: white;
+}
+
+.sort {
+  display: flex;
+
+  &-title {
+    text-transform: uppercase;
+    margin-right: 20px;
+  }
+
+  &-btn {
+    padding: 0 20px;
+    border: none;
+    background-color: #7070706e;
+    color: white;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: #adadad6e;
+    }
+
+    &--active {
+      background-color: #f65261;
+      &:hover {
+        background-color: #fb6977;
+      }
+    }
+
+    &--left {
+      border-radius: 5px 0 0 5px;
+    }
+
+    &--right {
+      border-radius: 0 5px 5px 0;
+    }
+  }
+}
