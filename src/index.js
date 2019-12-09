@@ -1,10 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App.js";
-import './index.scss';
-import Footer from "./components/footer/footer";
-import Header from "./components/header/header";
-ReactDOM.render(<Header />, document.getElementById("root"  ));
-//ReactDOM.render(<App />, document.getElementById("root"  ));
-ReactDOM.render(<Footer />, document.getElementById("root"  ));
-ReactDOM.render(<Header />, document.getElementById("root"  ));
+
+ReactDOM.render(<App />, document.getElementById("root"  ));

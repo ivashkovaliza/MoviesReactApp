@@ -1,10 +1,11 @@
 import React from 'react';
-import './footer.scss';
+import './Footer.scss';
+import Logo from '../Logo/Logo';
 
 const Footer = () => {
   return (
     <footer className={'footer'}>
-      <p><b>netflix</b>roulette</p>
+      <Logo />
     </footer>
   );
 };
