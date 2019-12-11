@@ -1,18 +1,15 @@
-import React, { Component } from "react";
-
-import './styles/reset.scss'
-import './styles/style.scss';
-
+import React, {Component} from "react";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-import Main from './components/Main/Main'
+import Main from './components/Main/Main';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+import './styles/reset.scss'
+import './styles/style.scss';
 
 class App extends Component {
   constructor() {
     super();
-    this.state= {
-      sortBy: 'release_date',
-      isSelectedFilm: false,
+    this.state = {
       selectedMovieData: null,
       movies: []
     }
@@ -24,27 +21,27 @@ class App extends Component {
     });
   }
 
-  // onSort(val) {
-  //   this.setState({
-  //     sortBy: val,
-  //   });
-  // }
-
-  onSelectFilm(isSelectedFilm, selectedMovieData) {
+  onSelectMovie(selectedMovieData) {
     this.setState({
-      isSelectedFilm: isSelectedFilm,
       selectedMovieData: selectedMovieData,
     });
   }
 
+  removeSelectedMovie() {
+    this.setState({
+      selectedMovieData: null,
+    });
+  }
+
   render() {
-    console.log('app state   ', this.state);
     return (
-      <>
-        <Header isSelectedFilm={this.state.selectedMovieData} selectedMovieData={this.state.selectedMovieData} onSearch={this.onSearch.bind(this)}/>
-        <Main selectedMovieData={this.state.selectedMovieData} onSelectFilm={this.onSelectFilm.bind(this)} movies={this.state.movies} />
-        <Footer />
-      </>
+      <ErrorBoundary>
+        <Header removeSelectedMovie={this.removeSelectedMovie.bind(this)}
+                selectedMovieData={this.state.selectedMovieData} onSearch={this.onSearch.bind(this)}/>
+        <Main selectedMovieData={this.state.selectedMovieData} onSelectMovie={this.onSelectMovie.bind(this)}
+              movies={this.state.movies}/>
+        <Footer/>
+      </ErrorBoundary>
     );
   }
 }

@@ -2,12 +2,12 @@
   display: flex;
   align-items: center;
 
-  &-title {
-    text-transform: uppercase;
+  &__title {
     margin-right: 20px;
+    text-transform: uppercase;
   }
 
-  &-btn {
+  &__btn {
     padding: 10px 20px;
     border: none;
     background-color: #7070706e;
@@ -20,6 +20,7 @@
 
     &--active {
       background-color: #f65261;
+
       &:hover {
         background-color: #fb6977;
       }

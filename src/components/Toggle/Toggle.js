@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import PropTypes from 'prop-types';
 import './Toggle.scss';
 
@@ -24,9 +24,15 @@ export default class Toggle extends Component {
 
     return (
       <div className={'sort'}>
-        <p className={'sort-title'}>{this.props.title}</p>
-        <button className={`sort-btn sort-btn--left ${this.state.active === firstTab ? 'sort-btn--active' : ''}`} onClick={() => this.setActiveClass(firstTab)}>{this.props.toggleValues[0]}</button>
-        <button className={`sort-btn sort-btn--right ${this.state.active === secondTab ? 'sort-btn--active' : ''}`} onClick={() => this.setActiveClass(secondTab)}>{this.props.toggleValues[1]}</button>
+        <p className={'sort__title'}>{this.props.title}</p>
+        <button className={`sort__btn sort__btn--left ${this.state.active === firstTab ? 'sort__btn--active' : ''}`}
+                onClick={() => this.setActiveClass(firstTab)}>
+          {this.props.toggleValues[0]}
+        </button>
+        <button className={`sort__btn sort__btn--right ${this.state.active === secondTab ? 'sort__btn--active' : ''}`}
+                onClick={() => this.setActiveClass(secondTab)}>
+          {this.props.toggleValues[1]}
+        </button>
       </div>
     );
   }

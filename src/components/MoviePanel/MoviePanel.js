@@ -1,6 +1,6 @@
 import React from 'react';
-import './MoviePanel.scss';
 import PropTypes from "prop-types";
+import './MoviePanel.scss';
 
 const ResultsPanel = (props) => {
   const hasVoteAverage = !!props.selectedMovieData.vote_average;
@@ -17,7 +17,9 @@ const ResultsPanel = (props) => {
         </div>
         {tagline && <p className={'movie__tagline'}>{tagline}</p>}
         <div className={'movie__year-runtime'}>
-          <p><span className={'movie__numerical-data'}>{props.selectedMovieData.release_date.slice(0,4)}</span> year</p>
+          <p>
+            <span className={'movie__numerical-data'}>{props.selectedMovieData.release_date.slice(0, 4)}</span> year
+          </p>
           {runtime && <p><span className={'movie__numerical-data'}>{runtime}</span> min</p>}
         </div>
         <p>{props.selectedMovieData.overview}</p>

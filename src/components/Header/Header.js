@@ -1,27 +1,28 @@
 import React from 'react';
-import './Header.scss';
-import Logo from '../Logo/Logo';
-import SearchPanel from '../SearchPanel/SearchPanel';
-import MoviePanel from '../MoviePanel/MoviePanel'
 import PropTypes from 'prop-types';
+import Logo from '../Logo/Logo';
+import SearchButton from "../SearchButton/SearchButton";
+import MoviePanel from '../MoviePanel/MoviePanel';
+import SearchPanel from '../SearchPanel/SearchPanel';
+import './Header.scss';
 
 const Header = (props) => {
-  const isSelectedFilm = props.isSelectedFilm;
+  const selectedMovieData = props.selectedMovieData;
 
   return (
     <header className={'header'}>
       <div className={'wrapper'}>
-        <Logo className={'header__logo'} />
+        <div className={'header__top'}>
+          <Logo className={'header__logo'} />
+          {selectedMovieData && <SearchButton removeSelectedMovie={props.removeSelectedMovie}/>}
+        </div>
         <div className={'header__content'}>
-        {isSelectedFilm ? (
+        {selectedMovieData ? (
           <MoviePanel selectedMovieData={props.selectedMovieData} />
         ) : (
-
-            <SearchPanel onSearch={props.onSearch}/>
-
+          <SearchPanel onSearch={props.onSearch}/>
         )}
         </div>
-
       </div>
     </header>
   );
@@ -29,8 +30,8 @@ const Header = (props) => {
 
 Header.propTypes = {
   onSearch: PropTypes.func,
-  isSelectedFilm: PropTypes.bool,
   selectedMovieData: PropTypes.object,
+  removeSelectedMovie: PropTypes.func,
 };
 
 export default Header;

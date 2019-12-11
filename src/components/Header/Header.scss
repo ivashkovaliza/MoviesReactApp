@@ -1,12 +1,17 @@
 .header {
   width: 100%;
+  padding: 20px;
   background: url("../../images/movies-bg.jpg");
   background-size: cover;
-  padding: 20px;
 
   .wrapper {
     max-width: 1024px;
     margin: 0 auto;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
   }
 
   &__content {
