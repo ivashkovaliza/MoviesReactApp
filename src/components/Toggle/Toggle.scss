@@ -1,0 +1,37 @@
+.sort {
+  display: flex;
+  align-items: center;
+
+  &__title {
+    margin-right: 20px;
+    text-transform: uppercase;
+  }
+
+  &__btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #7070706e;
+    color: white;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: #adadad6e;
+    }
+
+    &--active {
+      background-color: #f65261;
+
+      &:hover {
+        background-color: #fb6977;
+      }
+    }
+
+    &--left {
+      border-radius: 5px 0 0 5px;
+    }
+
+    &--right {
+      border-radius: 0 5px 5px 0;
+    }
+  }
+}

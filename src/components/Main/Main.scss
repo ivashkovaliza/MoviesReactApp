@@ -1,0 +1,13 @@
+.main {
+  flex: 1 0 auto;
+  background-color: #232323;
+
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+}

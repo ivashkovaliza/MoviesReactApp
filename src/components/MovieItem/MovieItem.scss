@@ -1,0 +1,43 @@
+.movie__item {
+  width: 300px;
+  margin: 30px 10px;
+  cursor: pointer;
+
+  .wrapper {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+
+  &-img {
+    height: 450px;
+    margin-bottom: 20px;
+  }
+
+  &-info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-title {
+    margin-bottom: 16px;
+  }
+
+  &-genre {
+    font-size: 12px;
+    color: #8e8e8e;
+  }
+
+  &-date {
+    height: fit-content;
+    margin-left: 16px;
+    padding: 8px;
+    border: 1px solid #adadad;
+    border-radius: 5px;
+  }
+
+  &:hover {
+    .movie__item-img{
+      box-shadow: 0 0 11px 4px #f65261;
+    }
+  }
+}

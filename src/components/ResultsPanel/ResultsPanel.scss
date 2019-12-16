@@ -1,0 +1,12 @@
+.result-panel {
+  padding: 20px;
+  background-color: #424242;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+}
