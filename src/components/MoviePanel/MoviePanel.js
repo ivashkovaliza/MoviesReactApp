@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from "prop-types";
 import './MoviePanel.scss';
 
-const ResultsPanel = (props) => {
+const MoviePanel = (props) => {
   const hasVoteAverage = !!props.selectedMovieData.vote_average;
   const runtime = props.selectedMovieData.runtime;
   const tagline = props.selectedMovieData.tagline;
@@ -28,9 +28,9 @@ const ResultsPanel = (props) => {
   );
 };
 
-export default ResultsPanel;
+export default MoviePanel;
 
-ResultsPanel.propTypes = {
+MoviePanel.propTypes = {
   moviesAmount: PropTypes.number,
   isSelectedFilm: PropTypes.bool,
   selectedMovieData: PropTypes.object,
