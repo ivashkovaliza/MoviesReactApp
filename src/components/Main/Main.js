@@ -12,7 +12,7 @@ const Main = (props) => {
     <main className={'main'}>
       <ResultsPanel selectedMovieData={props.selectedMovieData} moviesAmount={props.movies.length}/>
       <div className={'wrapper'}>
-        {props.movies.map((movie, i) => <MovieItem onSelectMovie={props.onSelectMovie} key={i} movieData={movie}/>)}
+        {props.movies.map((movie) => <MovieItem onSelectMovie={props.onSelectMovie} key={movie.id} movieData={movie}/>)}
         {!hasMovies && <NotFoundMessage/>}
       </div>
     </main>
