@@ -2,14 +2,16 @@ import React, {Component} from "react";
 import PropTypes from 'prop-types';
 import Toggle from "../Toggle/Toggle";
 import './SearchPanel.scss';
+import {moviesFetchData, setFilter, setSearch} from "../../actions/actions";
+import {connect} from "react-redux";
 
-export default class SearchPanel extends Component {
+class SearchPanel extends Component {
   constructor() {
     super();
     this.state = {
       searchValue: '',
       searchByValue: 'title',
-      sortBy: 'release_date'
+      sortBy: 'release_dateee'
     }
   }
 
@@ -17,10 +19,6 @@ export default class SearchPanel extends Component {
     this.setState({
       searchValue: value
     });
-  }
-
-  search() {
-    this.getData();
   }
 
   changeSearchByValue(value) {
@@ -31,26 +29,33 @@ export default class SearchPanel extends Component {
 
   handleKeyDown(event) {
     if (event.key === 'Enter') {
-      this.search();
+      console.log(`Fetch searchBy ${this.props.searchBy}`);
+      this.props.moviesFetchData(this.props.sortBy, this.props.search, this.props.searchBy);
     }
   }
 
   getData() {
-    fetch(`https://reactjs-cdp.herokuapp.com/movies?sortBy=${this.state.sortBy}&sortOrder=desc&search=${this.state.searchValue}&searchBy=${this.state.searchByValue}`)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            movies: result.data
-          });
-          this.props.onSearch(result.data);
-        },
-        (error) => {
-          this.setState({
-            error
-          });
-        }
-      )
+    this.props.moviesFetchData(this.props.sortBy, this.props.search, this.props.searchBy);
+
+    // fetch(`https://reactjs-cdp.herokuapp.com/movies?sortBy=${this.state.sortBy}&sortOrder=desc&search=${this.state.searchValue}&searchBy=${this.state.searchByValue}`)
+    //   .then(res => res.json())
+    //   .then(
+    //     (result) => {
+    //       this.setState({
+    //         movies: result.data
+    //       });
+    //       this.props.onSearch(result.data);
+    //     },
+    //     (error) => {
+    //       this.setState({
+    //         error
+    //       });
+    //     }
+    //   )
+  }
+
+  handleToggleClick(searchBy) {
+    this.props.setFilter(searchBy);
   }
 
   render() {
@@ -60,15 +65,42 @@ export default class SearchPanel extends Component {
         <div className={'search'}>
           <input className={'search__field'} name="Movie" placeholder="Search" type="search"
                  onKeyDown={event => this.handleKeyDown(event)}
-                 onChange={event => this.changeSearchValue(event.target.value)}/>
-          <button className={'search__btn'} type="submit" onClick={() => this.search()}>Search</button>
+                 onChange={event => {
+                   this.props.setSearch(event.target.value);
+                   //this.changeSearchValue(event.target.value);
+                 }}/>
+          <button className={'search__btn'} type="submit" onClick={() => this.getData()}>Search</button>
         </div>
-        <Toggle title={'Search by'} onToggle={this.changeSearchByValue.bind(this)} toggleValues={['title', 'genres']}/>
+        <Toggle title={'Search by'} handleToggleClick={this.handleToggleClick.bind(this)} onToggle={this.changeSearchByValue.bind(this)} toggleValues={['title', 'genres']}/>
       </>
     );
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    searchBy: state.searchBy,
+    sortBy: state.sortBy,
+    search: state.search,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setFilter: (filter) => dispatch(setFilter(filter)),
+    setSearch: (filter) => dispatch(setSearch(filter)),
+    moviesFetchData: (sortBy, search, searchBy) => dispatch(moviesFetchData(sortBy, search, searchBy))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchPanel);
+
 SearchPanel.propTypes = {
   onSearch: PropTypes.func,
+  moviesFetchData: PropTypes.func,
+  searchBy: PropTypes.string,
+  search: PropTypes.string,
+  sortBy: PropTypes.string,
+  setSearch: PropTypes.func,
+  setFilter: PropTypes.func,
 };

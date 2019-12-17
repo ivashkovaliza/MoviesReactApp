@@ -4,6 +4,8 @@ import ResultsPanel from '../ResultsPanel/ResultsPanel';
 import MovieItem from '../MovieItem/MovieItem';
 import NotFoundMessage from '../NotFoundMessage/NotFoundMessage';
 import './Main.scss';
+import {moviesFetchData, setFilter} from "../../actions/actions";
+import {connect} from "react-redux";
 
 const Main = (props) => {
   const hasMovies = !!props.movies.length;
@@ -19,7 +21,13 @@ const Main = (props) => {
   );
 };
 
-export default Main;
+const mapStateToProps = (state) => {
+  return {
+    movies: state.movies,
+  };
+};
+
+export default connect(mapStateToProps)(Main);
 
 Main.propTypes = {
   movies: PropTypes.array,

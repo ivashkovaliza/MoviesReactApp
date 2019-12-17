@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import './MovieItem.scss';
+import {selectMovie, moviesFetchData} from "../../actions/actions";
+import {connect} from "react-redux";
 
 const MovieItem = (props) => {
   return (
     <figure onClick={() => {
-      props.onSelectMovie(props.movieData)
+      props.onSelectMovie(props.movieData);
+      props.selectMovie(props.movieData);
+      props.moviesFetchData(null, props.movieData.genres[0], 'genres');
     }} className={'movie__item'}>
       <img className={'movie__item-img'} src={props.movieData.poster_path} alt=""/>
       <figcaption className={'movie__item-info'}>
@@ -19,7 +23,21 @@ const MovieItem = (props) => {
   );
 };
 
-export default MovieItem;
+const mapStateToProps = (state) => {
+  return {
+    searchBy: state.searchBy,
+    sortBy: state.sortBy,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    selectMovie: (filter) => dispatch(selectMovie(filter)),
+    moviesFetchData: (sortBy, search, searchBy) => dispatch(moviesFetchData(sortBy, search, searchBy))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieItem);
 
 MovieItem.propTypes = {
   title: PropTypes.string,
@@ -27,5 +45,7 @@ MovieItem.propTypes = {
   genres: PropTypes.string,
   imgUrl: PropTypes.string,
   onSelectMovie: PropTypes.func,
-  movieData: PropTypes.object
+  movieData: PropTypes.object,
+  selectMovie: PropTypes.func,
+  moviesFetchData: PropTypes.func
 };
