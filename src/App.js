@@ -5,6 +5,7 @@ import Main from './components/Main/Main';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import './styles/reset.scss'
 import './styles/style.scss';
+import { BrowserRouter as Router} from "react-router-dom";
 
 class App extends Component {
   constructor() {
@@ -36,11 +37,13 @@ class App extends Component {
   render() {
     return (
       <ErrorBoundary>
-        <Header removeSelectedMovie={this.removeSelectedMovie.bind(this)}
-                selectedMovieData={this.state.selectedMovieData} onSearch={this.onSearch.bind(this)}/>
-        <Main selectedMovieData={this.state.selectedMovieData} onSelectMovie={this.onSelectMovie.bind(this)}
-              movies={this.state.movies}/>
-        <Footer/>
+        <Router>
+          <Header removeSelectedMovie={this.removeSelectedMovie.bind(this)}
+                  selectedMovieData={this.state.selectedMovieData} onSearch={this.onSearch.bind(this)}/>
+          <Main selectedMovieData={this.state.selectedMovieData} onSelectMovie={this.onSelectMovie.bind(this)}
+                movies={this.state.movies}/>
+          <Footer/>
+        </Router>
       </ErrorBoundary>
     );
   }

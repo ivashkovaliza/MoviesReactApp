@@ -4,6 +4,7 @@ import Toggle from "../Toggle/Toggle";
 import './SearchPanel.scss';
 import {moviesFetchData, setFilter, setSearch} from "../../actions/actions";
 import {connect} from "react-redux";
+import { Link } from "react-router-dom";
 
 class SearchPanel extends Component {
   constructor() {
@@ -69,7 +70,11 @@ class SearchPanel extends Component {
                    this.props.setSearch(event.target.value);
                    //this.changeSearchValue(event.target.value);
                  }}/>
-          <button className={'search__btn'} type="submit" onClick={() => this.getData()}>Search</button>
+          {/*https://reactjs-cdp.herokuapp.com/movies?sortBy=release_date&sortOrder=desc&search=&searchBy=title*/}
+
+          <Link to={`search/movies?sortBy=${this.props.sortBy}&sortOrder=desc&search=${this.props.search}&searchBy=${this.props.searchBy}`}>
+            <button className={'search__btn'} type="submit" onClick={() => this.getData()}>Search</button>
+          </Link>
         </div>
         <Toggle title={'Search by'} handleToggleClick={this.handleToggleClick.bind(this)} onToggle={this.changeSearchByValue.bind(this)} toggleValues={['title', 'genres']}/>
       </>
