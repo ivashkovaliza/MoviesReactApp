@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import { bindActionCreators } from 'redux';
-import { setFilter, moviesFetchData } from '../../actions/actions';
+import { setFilter } from '../../actions/actions';
 import './Toggle.scss';
 
 class Toggle extends Component {
@@ -17,9 +16,6 @@ class Toggle extends Component {
     this.setState({
       active: activeElem,
     });
-
-    //this.props.setFilter(activeElem);
-    //this.props.fetchData('https://reactjs-cdp.herokuapp.com/movies');
   }
 
   render() {
@@ -57,8 +53,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setFilter: (filter) => dispatch(setFilter(filter)),
-    fetchData: (url) => dispatch(moviesFetchData(url))
+    setFilter: (filter) => dispatch(setFilter(filter))
   }
 };
 
@@ -69,7 +64,6 @@ Toggle.propTypes = {
   toggleValues: PropTypes.array,
   onToggle: PropTypes.func,
   setFilter: PropTypes.func,
-  fetchData: PropTypes.func,
   searchBy: PropTypes.string,
   handleToggleClick: PropTypes.func
 };

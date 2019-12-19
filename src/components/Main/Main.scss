@@ -1,6 +1,8 @@
+@import '../../styles/_colors';
+
 .main {
   flex: 1 0 auto;
-  background-color: #232323;
+  background-color: $dark-grey;
 
   .wrapper {
     display: flex;

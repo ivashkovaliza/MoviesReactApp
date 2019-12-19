@@ -1,3 +1,5 @@
+@import '../../styles/_colors';
+
 .search {
   display: flex;
   margin-bottom: 20px;
@@ -5,14 +7,14 @@
   &__btn {
     padding: 16px 60px;
     font-size: 20px;
-    color: white;
+    color: $white;
     text-transform: uppercase;
-    background-color: #f65261;
+    background-color: $salmon;
     border: none;
     border-radius: 5px;
 
     &:hover {
-      background-color: #fb6977;
+      background-color: $light-salmon;
     }
   }
 
@@ -21,8 +23,8 @@
     margin-right: 10px;
     padding: 16px;
     font-size: 20px;
-    color: white;
-    background-color: #44414194;
+    color: $white;
+    background-color: $transparent-grey;
     border: none;
     border-radius: 5px;
   }

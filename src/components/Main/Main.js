@@ -1,21 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ResultsPanel from '../ResultsPanel/ResultsPanel';
 import MovieItem from '../MovieItem/MovieItem';
-import NotFoundMessage from '../NotFoundMessage/NotFoundMessage';
+import MoviesNotFoundMessage from '../MoviesNotFoundMessage/MoviesNotFoundMessage';
 import './Main.scss';
-import {moviesFetchData, setFilter} from "../../actions/actions";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
 const Main = (props) => {
   const hasMovies = !!props.movies.length;
 
   return (
     <main className={'main'}>
-      <ResultsPanel selectedMovieData={props.selectedMovieData} moviesAmount={props.movies.length}/>
+      {props.ResultsPanel}
       <div className={'wrapper'}>
-        {props.movies.map((movie) => <MovieItem onSelectMovie={props.onSelectMovie} key={movie.id} movieData={movie}/>)}
-        {!hasMovies && <NotFoundMessage/>}
+        {props.movies.map((movie) => <Link to={`/movie/${movie.id}`} key={movie.id}><MovieItem movieData={movie}/></Link>)}
+        {!hasMovies && <MoviesNotFoundMessage/>}
       </div>
     </main>
   );
@@ -31,6 +30,5 @@ export default connect(mapStateToProps)(Main);
 
 Main.propTypes = {
   movies: PropTypes.array,
-  onSelectMovie: PropTypes.func,
-  selectedMovieData: PropTypes.object,
+  ResultsPanel: PropTypes.object
 };

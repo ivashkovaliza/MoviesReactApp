@@ -1,17 +1,35 @@
 import React from "react";
 import './SearchButton.scss';
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import {removeMovies} from "../../actions/actions";
+import {connect} from "react-redux";
 
 const SearchButton = (props) => {
   return (
-    <a href="#" onClick={() => props.removeSelectedMovie()} className={'search-icon'}>
+    <Link to={'/'} className={'search-icon'} onClick={() => props.removeMovies()}>
       <i className="fas fa-search fa-2x fa-flip-horizontal"></i>
-    </a>
+    </Link>
   );
 };
 
-export default SearchButton;
+
+// const mapStateToProps = (state) => {
+//   return {
+//     searchBy: state.searchBy,
+//     sortBy: state.sortBy,
+//     search: state.search,
+//   };
+// };
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeMovies: (filter) => dispatch(removeMovies(filter)),
+  }
+};
+
+export default connect(null, mapDispatchToProps)(SearchButton);
 
 SearchButton.propTypes = {
-  removeSelectedMovie: PropTypes.func,
+  removeMovies: PropTypes.func,
 };

@@ -1,4 +1,11 @@
-import {MOVIES_FETCH, MOVIES_FILTERING, MOVIES_SORTING, MOVIES_SEARCH, MOVIE_SELECTION} from '../actions/actions'
+import {
+  MOVIES_FETCH,
+  MOVIES_FILTERING,
+  MOVIES_SORTING,
+  MOVIES_SEARCH,
+  MOVIE_SELECTION,
+  MOVIES_REMOVING
+} from '../actions/actions'
 
 export const initialState = {
   movies: [],
@@ -34,6 +41,11 @@ export default function movieReducer(state = initialState, action) {
       return {
         ...state,
         selectedMovie: action.selectedMovie
+      };
+    case MOVIES_REMOVING:
+      return {
+        ...state,
+        movies: []
       };
     default:
       return state;

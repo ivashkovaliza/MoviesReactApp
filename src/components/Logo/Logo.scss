@@ -1,7 +1,9 @@
+@import '../../styles/_colors';
+
 .logo {
   font-size: 22px;
   font-weight: 200;
-  color: #f65261;
+  color: $salmon;
 
   &--bold {
     font-weight: bold;

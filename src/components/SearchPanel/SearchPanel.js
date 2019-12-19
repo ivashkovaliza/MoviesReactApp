@@ -1,86 +1,59 @@
-import React, {Component} from "react";
+import React from "react";
 import PropTypes from 'prop-types';
 import Toggle from "../Toggle/Toggle";
 import './SearchPanel.scss';
-import {moviesFetchData, setFilter, setSearch} from "../../actions/actions";
+import {moviesFetchData, setFilter, setSearch, setSorting} from "../../actions/actions";
 import {connect} from "react-redux";
 import { Link } from "react-router-dom";
 
-class SearchPanel extends Component {
-  constructor() {
-    super();
-    this.state = {
-      searchValue: '',
-      searchByValue: 'title',
-      sortBy: 'release_dateee'
+const SearchPanel = (props) => {
+
+  const ParseQuery = () => {
+    const queryParams = window.location.search.slice(1).split('&').map((item) =>  item.split('=')[1]);
+    const [sort, search, filter] = [...queryParams];
+
+    console.log(search);
+
+    props.setSorting(sort);
+    props.setSearch(search);
+    props.setFilter(filter);
+
+    props.moviesFetchData(sort, search, filter);
+  };
+
+
+  window.addEventListener('load', () => {
+    if(window.location.search) {
+      ParseQuery();
+      //props.getData()
     }
-  }
+    console.log('page is fully loaded');
+  });
 
-  changeSearchValue(value) {
-    this.setState({
-      searchValue: value
-    });
-  }
 
-  changeSearchByValue(value) {
-    this.setState({
-      searchByValue: value
-    });
-  }
-
-  handleKeyDown(event) {
-    if (event.key === 'Enter') {
-      console.log(`Fetch searchBy ${this.props.searchBy}`);
-      this.props.moviesFetchData(this.props.sortBy, this.props.search, this.props.searchBy);
-    }
-  }
-
-  getData() {
-    this.props.moviesFetchData(this.props.sortBy, this.props.search, this.props.searchBy);
-
-    // fetch(`https://reactjs-cdp.herokuapp.com/movies?sortBy=${this.state.sortBy}&sortOrder=desc&search=${this.state.searchValue}&searchBy=${this.state.searchByValue}`)
-    //   .then(res => res.json())
-    //   .then(
-    //     (result) => {
-    //       this.setState({
-    //         movies: result.data
-    //       });
-    //       this.props.onSearch(result.data);
-    //     },
-    //     (error) => {
-    //       this.setState({
-    //         error
-    //       });
-    //     }
-    //   )
-  }
-
-  handleToggleClick(searchBy) {
-    this.props.setFilter(searchBy);
-  }
-
-  render() {
     return (
       <>
         <h1 className={'h1'}>Find your film</h1>
         <div className={'search'}>
           <input className={'search__field'} name="Movie" placeholder="Search" type="search"
-                 onKeyDown={event => this.handleKeyDown(event)}
+                 onKeyDown={event => props.handleKeyDown(event)}
                  onChange={event => {
-                   this.props.setSearch(event.target.value);
+                   props.setSearch(event.target.value);
                    //this.changeSearchValue(event.target.value);
                  }}/>
-          {/*https://reactjs-cdp.herokuapp.com/movies?sortBy=release_date&sortOrder=desc&search=&searchBy=title*/}
+                 {/*///movies?sortBy=${props.sortBy}&sortOrder=desc&search=${props.search}&searchBy=${props.searchBy}*/}
 
-          <Link to={`search/movies?sortBy=${this.props.sortBy}&sortOrder=desc&search=${this.props.search}&searchBy=${this.props.searchBy}`}>
-            <button className={'search__btn'} type="submit" onClick={() => this.getData()}>Search</button>
+          <Link to={`/search/movies?sortBy=${props.sortBy}&search=${props.search}&searchBy=${props.searchBy}`}>
+            <button className={'search__btn'} type="submit" onClick={() => {
+              props.getData();
+            }}>Search</button>
           </Link>
         </div>
-        <Toggle title={'Search by'} handleToggleClick={this.handleToggleClick.bind(this)} onToggle={this.changeSearchByValue.bind(this)} toggleValues={['title', 'genres']}/>
+        <Toggle title={'Search by'} handleToggleClick={props.setFilter} toggleValues={['title', 'genres']}/>
       </>
     );
-  }
-}
+};
+
 
 const mapStateToProps = (state) => {
   return {
@@ -93,7 +66,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setFilter: (filter) => dispatch(setFilter(filter)),
-    setSearch: (filter) => dispatch(setSearch(filter)),
+    setSearch: (search) => dispatch(setSearch(search)),
+    setSorting: (sort) => dispatch(setSorting(sort)),
     moviesFetchData: (sortBy, search, searchBy) => dispatch(moviesFetchData(sortBy, search, searchBy))
   }
 };
@@ -108,4 +82,7 @@ SearchPanel.propTypes = {
   sortBy: PropTypes.string,
   setSearch: PropTypes.func,
   setFilter: PropTypes.func,
+  setSorting: PropTypes.func,
+  handleKeyDown: PropTypes.func,
+  getData: PropTypes.func,
 };

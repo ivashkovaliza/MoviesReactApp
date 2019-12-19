@@ -7,9 +7,9 @@ import {connect} from "react-redux";
 const MovieItem = (props) => {
   return (
     <figure onClick={() => {
-      props.onSelectMovie(props.movieData);
+      //props.onSelectMovie(props.movieData);
       props.selectMovie(props.movieData);
-      props.moviesFetchData(null, props.movieData.genres[0], 'genres');
+      props.moviesFetchData('release_date', props.movieData.genres[0], 'genres');
     }} className={'movie__item'}>
       <img className={'movie__item-img'} src={props.movieData.poster_path} alt=""/>
       <figcaption className={'movie__item-info'}>
@@ -44,7 +44,7 @@ MovieItem.propTypes = {
   date: PropTypes.string,
   genres: PropTypes.string,
   imgUrl: PropTypes.string,
-  onSelectMovie: PropTypes.func,
+  // onSelectMovie: PropTypes.func,
   movieData: PropTypes.object,
   selectMovie: PropTypes.func,
   moviesFetchData: PropTypes.func

@@ -3,6 +3,7 @@ export const MOVIES_FILTERING = 'MOVIES_FILTERING';
 export const MOVIES_SORTING = 'MOVIES_SORTING';
 export const  MOVIES_SEARCH = 'MOVIES_SEARCH';
 export const MOVIE_SELECTION = 'MOVIE_SElECTION';
+export const MOVIES_REMOVING= 'MOVIES_REMOVING';
 
 export function fetchMovies(movies) {
   return {
@@ -40,6 +41,12 @@ export function setSearch(search) {
   return {
     type: MOVIES_SEARCH,
     search
+  };
+}
+
+export function removeMovies() {
+  return {
+    type: MOVIES_REMOVING
   };
 }
 
