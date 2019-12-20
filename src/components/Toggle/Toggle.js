@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 import PropTypes from 'prop-types';
-import {connect} from "react-redux";
-import { setFilter } from '../../actions/actions';
 import './Toggle.scss';
 
 class Toggle extends Component {
@@ -44,26 +42,10 @@ class Toggle extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    searchBy: state.searchBy,
-    sortBy: state.sortBy,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setFilter: (filter) => dispatch(setFilter(filter))
-  }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Toggle);
+export default Toggle;
 
 Toggle.propTypes = {
   title: PropTypes.string,
   toggleValues: PropTypes.array,
-  onToggle: PropTypes.func,
-  setFilter: PropTypes.func,
-  searchBy: PropTypes.string,
   handleToggleClick: PropTypes.func
 };

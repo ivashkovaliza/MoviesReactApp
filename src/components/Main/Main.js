@@ -4,16 +4,15 @@ import MovieItem from '../MovieItem/MovieItem';
 import MoviesNotFoundMessage from '../MoviesNotFoundMessage/MoviesNotFoundMessage';
 import './Main.scss';
 import {connect} from "react-redux";
-import {Link} from "react-router-dom";
 
 const Main = (props) => {
   const hasMovies = !!props.movies.length;
 
   return (
     <main className={'main'}>
-      {props.ResultsPanel}
+      {props.resultsPanel}
       <div className={'wrapper'}>
-        {props.movies.map((movie) => <Link to={`/movie/${movie.id}`} key={movie.id}><MovieItem movieData={movie}/></Link>)}
+        {props.movies.map((movie) => <MovieItem key={movie.id} movieData={movie}/>)}
         {!hasMovies && <MoviesNotFoundMessage/>}
       </div>
     </main>
@@ -30,5 +29,5 @@ export default connect(mapStateToProps)(Main);
 
 Main.propTypes = {
   movies: PropTypes.array,
-  ResultsPanel: PropTypes.object
+  resultsPanel: PropTypes.object
 };

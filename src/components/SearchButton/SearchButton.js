@@ -13,15 +13,6 @@ const SearchButton = (props) => {
   );
 };
 
-
-// const mapStateToProps = (state) => {
-//   return {
-//     searchBy: state.searchBy,
-//     sortBy: state.sortBy,
-//     search: state.search,
-//   };
-// };
-
 const mapDispatchToProps = (dispatch) => {
   return {
     removeMovies: (filter) => dispatch(removeMovies(filter)),

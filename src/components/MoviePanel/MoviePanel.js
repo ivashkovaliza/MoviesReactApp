@@ -14,7 +14,7 @@ const MoviePanel = (props) => {
       <div className={'movie__info'}>
         <div className={'movie__title-rating'}>
           <h1 className={'h1'}>{props.selectedMovie.title}</h1>
-          {hasVoteAverage && <span className={'movie__rating'}>{props.selectedMovie.vote_average}</span>}
+          {hasVoteAverage && <p className={'movie__rating'}>{props.selectedMovie.vote_average}</p>}
         </div>
         {tagline && <p className={'movie__tagline'}>{tagline}</p>}
         <div className={'movie__year-runtime'}>
@@ -38,7 +38,5 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps)(MoviePanel);
 
 MoviePanel.propTypes = {
-  moviesAmount: PropTypes.number,
-  isSelectedFilm: PropTypes.bool,
   selectedMovie: PropTypes.object,
 };

@@ -15,14 +15,17 @@
   }
 
   &__rating {
+    height: 55px;
+    width: 64px;
+    margin-bottom: 40px;
+    margin-left: 20px;
+    padding: 15px;
+    box-sizing: border-box;
     font-size: 22px;
+    text-align: center;
     color: $green;
     border: 1px solid $white;
     border-radius: 50%;
-    padding: 15px 10px;
-    height: fit-content;
-    margin-bottom: 40px;
-    margin-left: 20px;
   }
 
   &__tagline {
