@@ -1,3 +1,5 @@
+@import '../../styles/_colors';
+
 .footer {
   display: flex;
   flex: 0 0 auto;
@@ -6,6 +8,6 @@
   padding: 20px;
   font-size: 24px;
   text-align: center;
-  color: #f65261;
-  background-color: #424242;
+  color: $salmon;
+  background-color: $grey;
 }

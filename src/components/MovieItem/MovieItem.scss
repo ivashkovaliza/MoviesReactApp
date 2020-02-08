@@ -1,3 +1,5 @@
+@import '../../styles/_colors';
+
 .movie__item {
   width: 300px;
   margin: 30px 10px;
@@ -24,20 +26,20 @@
 
   &-genre {
     font-size: 12px;
-    color: #8e8e8e;
+    color: $light-grey;
   }
 
   &-date {
     height: fit-content;
     margin-left: 16px;
     padding: 8px;
-    border: 1px solid #adadad;
+    border: 1px solid $light-grey;
     border-radius: 5px;
   }
 
   &:hover {
     .movie__item-img{
-      box-shadow: 0 0 11px 4px #f65261;
+      box-shadow: 0 0 11px 4px $salmon;
     }
   }
 }

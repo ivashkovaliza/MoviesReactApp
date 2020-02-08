@@ -1,3 +1,5 @@
+@import '../../styles/_colors';
+
 .movie {
   display: flex;
   padding: 0 20px;
@@ -13,18 +15,21 @@
   }
 
   &__rating {
-    font-size: 22px;
-    color: #a1e66f;
-    border: 1px solid white;
-    border-radius: 50%;
-    padding: 15px 10px;
-    height: fit-content;
+    height: 55px;
+    width: 64px;
     margin-bottom: 40px;
     margin-left: 20px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 22px;
+    text-align: center;
+    color: $green;
+    border: 1px solid $white;
+    border-radius: 50%;
   }
 
   &__tagline {
-    color: #8e8e8e;
+    color: $light-grey;
     font-size: 12px;
     margin-bottom: 30px;
   }
@@ -40,6 +45,6 @@
 
   &__numerical-data {
     font-size: 22px;
-    color: #f65261;
+    color: $salmon;
   }
 }

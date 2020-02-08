@@ -1,8 +1,10 @@
+@import '../../styles/_colors';
+
 .search-icon {
   padding: 0 40px;
-  color: #f65261;
+  color: $salmon;
 
   &:hover {
-    color: #fb6977;
+    color: $light-salmon;
   }
 }

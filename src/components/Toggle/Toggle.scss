@@ -1,3 +1,5 @@
+@import '../../styles/_colors';
+
 .sort {
   display: flex;
   align-items: center;
@@ -10,19 +12,19 @@
   &__btn {
     padding: 10px 20px;
     border: none;
-    background-color: #7070706e;
-    color: white;
+    background-color: $transparent-grey;
+    color: $white;
     text-transform: uppercase;
 
     &:hover {
-      background-color: #adadad6e;
+      background-color: $transparent-grey;
     }
 
     &--active {
-      background-color: #f65261;
+      background-color: $salmon;
 
       &:hover {
-        background-color: #fb6977;
+        background-color: $light-salmon;
       }
     }
 
