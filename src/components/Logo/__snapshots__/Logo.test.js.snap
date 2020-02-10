@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logo renders correctly 1`] = `
+<span
+  className="logo"
+>
+  <span
+    className="logo--bold"
+  >
+    netflix
+  </span>
+  roulette
+</span>
+`;

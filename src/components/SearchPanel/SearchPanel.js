@@ -11,7 +11,7 @@ const SearchPanel = (props) => {
     <>
       <h1 className={'h1'}>Find your film</h1>
       <div className={'search'}>
-        <input className={'search__field'} name="Movie" placeholder="Search" type="search"
+        <input className={'search__field'} name="movie" placeholder="Search" type="search"
                onKeyDown={event => props.handleKeyDown(event)}
                onChange={event => {
                  props.setSearch(event.target.value);

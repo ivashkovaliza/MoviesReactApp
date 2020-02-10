@@ -42,12 +42,10 @@ export function removeMovies() {
 }
 
 export function moviesFetchData(sortBy, search, searchBy) {
-  // console.log(`https://reactjs-cdp.herokuapp.com/movies?sortBy=${sortBy}&sortOrder=desc&search=${search}&searchBy=${searchBy}`);
   return (dispatch) => {
     fetch(`https://reactjs-cdp.herokuapp.com/movies?sortBy=${sortBy}&sortOrder=desc&search=${search}&searchBy=${searchBy}`)
       .then((response) => response.json())
       .then((movies) => {
-        console.log(movies);
         dispatch(fetchMovies(movies.data))
       })
   };
