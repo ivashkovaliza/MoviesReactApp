@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toggle renders correctly 1`] = `
+<div
+  className="sort"
+>
+  <p
+    className="sort__title"
+  />
+  <button
+    className="sort__btn sort__btn--left sort__btn--active"
+    onClick={[Function]}
+  >
+    title
+  </button>
+  <button
+    className="sort__btn sort__btn--right "
+    onClick={[Function]}
+  >
+    genres
+  </button>
+</div>
+`;

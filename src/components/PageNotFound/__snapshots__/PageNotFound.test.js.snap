@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageNotFound renders correctly 1`] = `
+<div
+  className="error__wrapper"
+>
+  <h1
+    className="error__msg"
+  >
+    404 Page Not Found
+  </h1>
+  <Link
+    className="error__link"
+    to="/"
+  >
+    Return to Home page
+  </Link>
+</div>
+`;
